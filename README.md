@@ -40,3 +40,35 @@ This PHP file functions as a backend script for user authentication, specificall
 9. If the user doesn't exist, it also displays an "Invalid Email or password" message.
 
 These PHP file serves as the backend logic for user login functionality, validating user credentials and providing appropriate feedback. Be sure to update the server credentials and database details before using it.
+
+
+This is the SQL code I have used for database:(Database name: myportfolio, SQL file name: portfolio.sql)
+DROP DATABASE portfolio;
+CREATE DATABASE portfolio;
+USE portfolio;
+
+CREATE TABLE signup
+(
+Username VARCHAR(30) NOT NULL,
+FirstName VARCHAR(30) NOT NULL,
+MiddleName VARCHAR(30) NOT NULL,
+LastName VARCHAR(30) NOT NULL,
+MobileNumber VARCHAR(25) NOT NULL,
+Password VARCHAR(25) NOT NULL,
+ConfirmPassword VARCHAR(25) NOT NULL,
+PRIMARY KEY(Username)
+);
+
+CREATE TABLE login
+(
+Username VARCHAR(30) NOT NULL,
+Password VARCHAR(25) NOT NULL,
+FOREIGN KEY(Username) REFERENCES signup(Username)
+);
+
+CREATE TABLE contactform
+(
+Name VARCHAR(40) NOT NULL,
+Email VARCHAR(30) NOT NULL,
+Message VARCHAR(200) NOT NULL
+);
